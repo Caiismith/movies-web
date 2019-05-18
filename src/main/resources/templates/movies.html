@@ -16,16 +16,19 @@
     <h3>Movies Web</h3>
 
     <div class="jumbotron">
-        <h1 class="display-4">Features</h1>
-        <p class="lead">Check out some of this stuff</p>
+        <h1 class="display-4">Check out our Database of Movies</h1>
+        <p class="lead">Click the links in the table below to see additional details of the movies, or click on of the following buttons to see some other information</p>
         <p class="lead">
-            <a class="btn btn-secondary btn-lg" href="http://localhost:8081/movies/Minions" role="button">All</a>
+            <a class="btn btn-dark btn-lg" href="http://localhost:8081/movies" role="button">All Movies</a>
+            <a class="btn btn-dark btn-lg" href="http://localhost:8081/movies/most-liked" role="button">Most Liked Movie</a>
+            <a class="btn btn-dark btn-lg" href="http://localhost:8081/movies/most-liked" role="button">Most Active User</a>
         </p>
     </div>
 
     <table class="table borderless">
         <thead class="thead-dark">
         <tr>
+            <th scope="col"> More Details</a></th>
             <th scope="col"> Title</th>
             <th scope="col"> Description</th>
             <th scope="col"> Producer</th>
@@ -36,6 +39,7 @@
         </thead>
         <tbody>
         <tr th:each="movie : ${movies}">
+            <td><a class="btn btn-success btn-lg" th:href="@{'http://localhost:8081/movies/' + ${movie.title}}" role="button">View</td>
             <td><span th:text="${movie.title}"> Title </span></td>
             <td><span th:text="${movie.description}"> Description </span></td>
             <td><span th:text="${movie.producer}"> Producer </span></td>

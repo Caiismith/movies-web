@@ -21,4 +21,12 @@ public class MoviesController {
 
         return "movies";
     }
+
+    @GetMapping("/most-liked")
+    public String getMostLikedMovie(Model model) {
+
+        model.addAttribute("movies", moviesService.getMostLikedMovie());
+
+        return "movies";
+    }
 }
