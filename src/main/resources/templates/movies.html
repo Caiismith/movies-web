@@ -3,7 +3,7 @@
         xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>All Fighters</title>
+    <title>Movies</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -14,6 +14,37 @@
 
 <div class="container">
     <h3>Movies Web</h3>
+
+    <div class="jumbotron">
+        <h1 class="display-4">Features</h1>
+        <p class="lead">Check out some of this stuff</p>
+        <p class="lead">
+            <a class="btn btn-secondary btn-lg" href="http://localhost:8081/movies/Minions" role="button">All</a>
+        </p>
+    </div>
+
+    <table class="table borderless">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"> Title</th>
+            <th scope="col"> Description</th>
+            <th scope="col"> Producer</th>
+            <th scope="col"> Availble in 3D</th>
+            <th scope="col"> Age Rating</th>
+            <th scope="col"> Likes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="movie : ${movies}">
+            <td><span th:text="${movie.title}"> Title </span></td>
+            <td><span th:text="${movie.description}"> Description </span></td>
+            <td><span th:text="${movie.producer}"> Producer </span></td>
+            <td><span th:text="${movie.availableInThreeDimension}"> Availble in 3D </span></td>
+            <td><span th:text="${movie.ageRating}"> Age Rating </span></td>
+            <td><span th:text="${movie.likes}"> Likes </span></td>
+        </tr>
+        </tbody>
+    </table>
 
 </div>
 
