@@ -9,6 +9,8 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/styles.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
 </head>
 <body>
 
@@ -19,6 +21,11 @@
         <h1 class="display-4" th:text="${movies.title}"></h1>
         <h3>Description:</h3>
         <p class="lead" th:text="${movies.description}"></p>
+        <p class="lead">
+            <a class="btn btn-dark btn-lg" href="http://localhost:8081/movies" role="button">All Movies</a>
+            <a class="btn btn-dark btn-lg" href="http://localhost:8081/movies/most-liked" role="button">Most Liked Movie</a>
+            <a class="btn btn-dark btn-lg" href="http://localhost:8081/movies/most-liked" role="button">Most Active User</a>
+        </p>
     </div>
 
     <h1>Movie Details</h1>
@@ -35,7 +42,7 @@
         <tbody>
         <tr th:each="movie : ${movies}">
             <td><span th:text="${movie.producer}"> Producer </span></td>
-            <td><span th:text="${movie.availableInThreeDimension}"> Availble in 3D </span></td>
+            <td><span class="booleanConvert" th:text="${movie.availableInThreeDimension}"> Availble in 3D </span></td>
             <td><span th:text="${movie.ageRating}"> Age Rating </span></td>
             <td><span th:text="${movie.likes}"> Likes </span></td>
         </tr>
@@ -62,8 +69,6 @@
         </tr>
         </tbody>
     </table>
-
-    <a class="btn btn-success btn-lg" href="http://localhost:8081/movies" role="button">Back to home</a>
 
 </div>
 
