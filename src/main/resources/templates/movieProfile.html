@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/styles.css}">
+</head>
+<body>
+
+<div class="container">
+    <h3 >Movies Web</h3>
+
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${movies.title}"></h1>
+        <h3>Description:</h3>
+        <p class="lead" th:text="${movies.description}"></p>
+    </div>
+
+    <h1>Movie Details</h1>
+
+    <table class="table borderless">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"> Producer</th>
+            <th scope="col"> Availble in 3D</th>
+            <th scope="col"> Age Rating</th>
+            <th scope="col"> Likes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="movie : ${movies}">
+            <td><span th:text="${movie.producer}"> Producer </span></td>
+            <td><span th:text="${movie.availableInThreeDimension}"> Availble in 3D </span></td>
+            <td><span th:text="${movie.ageRating}"> Age Rating </span></td>
+            <td><span th:text="${movie.likes}"> Likes </span></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h1>Comments</h1>
+
+    <table class="table borderless">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"> User</a></th>
+            <th scope="col"> Message</th>
+            <th scope="col"> Date Created</th>
+            <th scope="col"> Like</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="comment : ${comments}">
+            <td><span th:text="${comment.user}"> User </span></td>
+            <td><span th:text="${comment.message}"> Message </span></td>
+            <td><span th:text="${comment.dateHumanReadable}"> Date Created </span></td>
+            <td><span th:text="${comment.like}"> Like </span></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-success btn-lg" href="http://localhost:8081/movies" role="button">Back to home</a>
+
+</div>
+
+</body>
+</html>

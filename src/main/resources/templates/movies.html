@@ -31,20 +31,14 @@
             <th scope="col"> More Details</a></th>
             <th scope="col"> Title</th>
             <th scope="col"> Description</th>
-            <th scope="col"> Producer</th>
-            <th scope="col"> Availble in 3D</th>
-            <th scope="col"> Age Rating</th>
             <th scope="col"> Likes</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="movie : ${movies}">
-            <td><a class="btn btn-success btn-lg" th:href="@{'http://localhost:8081/movies/' + ${movie.title}}" role="button">View</td>
+            <td><a class="btn btn-success btn-lg" th:href="@{'http://localhost:8081/movies/id/' + ${movie.movieId}}" role="button">View</td>
             <td><span th:text="${movie.title}"> Title </span></td>
             <td><span th:text="${movie.description}"> Description </span></td>
-            <td><span th:text="${movie.producer}"> Producer </span></td>
-            <td><span th:text="${movie.availableInThreeDimension}"> Availble in 3D </span></td>
-            <td><span th:text="${movie.ageRating}"> Age Rating </span></td>
             <td><span th:text="${movie.likes}"> Likes </span></td>
         </tr>
         </tbody>

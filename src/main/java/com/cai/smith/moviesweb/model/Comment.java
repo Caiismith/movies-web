@@ -2,6 +2,8 @@ package com.cai.smith.moviesweb.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Date;
+
 public class Comment {
 
     @JsonProperty("user")
@@ -15,6 +17,8 @@ public class Comment {
 
     @JsonProperty("like")
     private int like;
+
+    private String dateHumanReadable;
 
     public String getUser() {
         return user;
@@ -46,5 +50,13 @@ public class Comment {
 
     public void setLike(int like) {
         this.like = like;
+    }
+
+    public String getDateHumanReadable() {
+        return dateHumanReadable;
+    }
+
+    public void setDateHumanReadable(String dateHumanReadable) {
+        this.dateHumanReadable = dateHumanReadable;
     }
 }
