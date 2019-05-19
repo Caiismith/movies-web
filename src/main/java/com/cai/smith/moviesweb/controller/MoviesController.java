@@ -2,6 +2,7 @@ package com.cai.smith.moviesweb.controller;
 
 import com.cai.smith.moviesweb.model.Comment;
 import com.cai.smith.moviesweb.model.Movie;
+import com.cai.smith.moviesweb.service.EpochDateService;
 import com.cai.smith.moviesweb.service.MoviesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,13 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Controller
 @RequestMapping("/movies")
@@ -24,6 +19,9 @@ public class MoviesController {
 
     @Autowired
     private MoviesService moviesService;
+
+    @Autowired
+    private EpochDateService epochDateService;
 
     private static final String MOVIES_MODEL_ATTR_NAME = "movies";
     private static final String COMMENTS_MODEL_ATTR_NAME = "comments";
@@ -53,10 +51,7 @@ public class MoviesController {
         for(Comment comment: comments) {
             Long seconds = Long.parseLong(comment.getDateCreated());
 
-            LocalDateTime dateTime = LocalDateTime.ofEpochSecond(seconds, 0, ZoneOffset.UTC);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d", Locale.ENGLISH);
-            String formattedDate = dateTime.format(formatter);
-            comment.setDateHumanReadable(formattedDate);
+            comment.setDateHumanReadable(epochDateService.convertToReadable(seconds));
         }
 
         model.addAttribute(MOVIES_MODEL_ATTR_NAME, movie);
